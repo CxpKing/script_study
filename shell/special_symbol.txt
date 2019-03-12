@@ -1,0 +1,26 @@
+${}	:获取变量的值
+	假设：file=/dir1/dir2/dir3/my.file.txt
+	${file#*/} 去掉左边第一条斜杠`/`以及斜杠左边所有字符
+	${file##*/} 去掉最后一条`/`及其左边所有字符串
+
+	${file#*.} 去掉左边第一个`.`以及点左边所有字符
+	${file##*.} 去掉最后一个`/`及其左边所有字符串
+
+	${file%/*} 去掉右边最后条斜杠`/`以及斜杠右边所有字符
+	${file%%/*} 去掉第一条`/`及其右边所有字符串
+
+	${file%.*} 去掉右边最后一个`.`以及点右边所有字符
+	${file%%.*} 去掉第一个`.`及其右边所有字符串
+
+	${file:0:5}  /dir1 	取file的前5个字符（0表示起始点，5表示字节数）
+	${file:5:5}	 /dir2
+
+	目录替换:
+	${file/dir/path}	 将第一个dir替换为path  /path1/dir2/dir3/my.file.txt
+	${file//dir/path}	 将所有的dir替换为path  /path1/path2/path3/my.file.txt
+
+	parm=${$1:-1}  如果第二个参数$1不为空，那么parm的值为$1,如果为空，则param=1
+	${str1:-str2}  如果str1不为空，则parm为str1,否则为str2
+
+	
+ 

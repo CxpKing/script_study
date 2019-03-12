@@ -1,0 +1,49 @@
+if判断的参数总结：
+
+if [ -a FILE ]; then	如果file存在则为真
+if [ -b FILE ]; then	如果file存在且为一个块特殊文件则为真
+if [ -c FILE ]; then	如果file存在且为一个字特殊文件则为真
+if [ -d FILE ]; then	如果file存在且是一个目录则为真
+if [ -e FILE ]; then	如果file存在则为真。
+if [ -f FILE ]; then	如果file存且是一个普通文件则为真
+if [ -g FILE ]; then	如果file存在且已经设置了SGID则为真
+if [ -h FILE ]; then	如果file存在且是一个符号连接则为真
+if [ -k FILE ]; then	如果file存在且已经设置了粘制位则为真
+if [ -p FILE ]; then	如果file存在且是一个名字管道(F如果O)则为真
+if [ -r FILE ]; then	如果file存在且是可读的则为真
+if [ -s FILE ]; then	如果file存在且大小不为0则为真
+if [ -t FD ]; then		如果文件描述符 FD 打开且指向一个终端则为真
+if [ -u FILE ]; then	如果 FILE 存在且设置了SUID (set user ID)则为真
+if [ -w FILE ]; then	如果 FILE 如果 FILE 存在且是可写的则为真
+if [ -x FILE ]; then	如果file存在且是可执行的则为真
+if [ -O FILE ]; then	如果file存在且属有效用户ID则为真
+if [ -G FILE ]; then	如果file存在且属有效用户组则为真
+if [ -L FILE ]; then	如果file存在且是一个符号连接则为真
+if [ -N FILE ]; then	如果file存在且and has been mod如果ied since it was last read则为真
+if [ -S FILE ]; then	如果file存在且是一个套接字则为真
+if [ -z STRING ]; then	“STRING” 的长度为零则为真
+if [ -o OPTIONNAME ]; then	如果 shell选项 “OPTIONNAME” 开启则为真
+if [ -n FILE ]; then	如果file存在且
+
+if [ file1 -nt file2 ] 如果file1修改时间比file2晚，或者file1存在且file2不存在则为真
+if [ file1 -ot file2 ] 如果file1创建时间比file2早，或者file1不存在且file2存在则为真
+if [ file1 -ef file2 ] 如果file1和file2指向相同的设备和节点则为真
+if [ file1 == file2 ]	如果file1等于file2则为真 同"="
+if [ file1 != file2 ]	如果file1不等于file2则为真
+
+eg:
+1. -z  test.sh
+parm="$1"
+if [ -z "$parm" ]; then
+	echo -e "\033[36m 参数不能为空\033[0m"
+	exit
+fi
+if [ "$parm" = "clear" ]; then
+	echo -e "\033[35m 清除\033[0m"
+fi
+
+if [ ! -d "cd ../dirname" ]; then
+	mkdir ../dirname
+else
+	echo -e "\033[35m 文件夹已经存在，你可能多次操作状态\033[0m"
+fi
