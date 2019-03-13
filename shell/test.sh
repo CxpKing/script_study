@@ -1,3 +1,4 @@
+#!/bin/bash
 name="$1"
 if [ "$name" == "name" ]; then
 	echo -e "\033[35m 你好！\033[0m"
@@ -15,4 +16,7 @@ else
 	echo -e "\033[35m Your folder has been existed!\033[0m"
 fi
 
-git diff --cached --name-only HEAD -> log.txt
+#git diff --cached --name-only HEAD -> log.txt
+if [ "$SHELL" = "/usr/bin/bash" ];then
+	echo "SHELL:$SHELL"
+fi
