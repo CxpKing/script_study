@@ -1,0 +1,8 @@
+1、创建文件目录
+	path="/dir1/dir2"
+	if [ ! -d "$path" ]; then
+		mkdir "$path"
+	else
+		echo -e "\033[35m Your folder has been existed!\033[0m"
+	fi
+

@@ -1,0 +1,21 @@
+git diff
+git diff --cached
+git diff HEAD
+三者有何区别：
+	在Git仓库中提交代码过程中，有三个部分：
+		working tree
+		index file
+		commit
+	1、working tree实际上就是我们编辑代码的那个工作区，每次我们修改了代码，working tree就会改变
+	2、index file为索引文件，它是working tree与commit的桥梁，每次使用 git add 命令后，index file就会发生改变，此时index file就与working tree 同步了
+	3、commit是最后阶段，只有使用 git commit了，代码才能真正进入到git仓库。此时是将index file的内容提交到了commit中
+
+说了以上三个部分提交过程，接下来就是如何知道三个区域的差别，就是使用三个git diff命令进行比较：
+	1、git diff 比较 working tree 与index file的差别
+	2、git diff --cached 比较 index file 与 commit 的差别
+	3、git diff HEAD 比较 working tree 与 commt 的差别
+
+Parameter
+	--name-only : 仅在查询信息中显示文件名称及路径
+	--name-status :显示新增、修改、删除的文件清单
+ 
