@@ -1,0 +1,52 @@
+1、range()用于生成链表
+	range(a)
+	range(a,b)
+	range(a,b,c)
+	需求：迭代出列表，同时打印出列表的索引
+	a = ['a','b','c']
+	for i in range(len(a))
+		print(i,a[i])
+	
+	这里还可以使用函数enumerate来获取
+	a = ['a','b','c']
+	for i,v in enumerate(a):
+		print(i,v)
+	
+	逆向循环列表元素reversed(range()),先获取正向索引，然后给reversed()
+	for i in reversed(range(len(a))):
+		print(i,a[i])
+2、for循环的妙用
+	1、循环列表
+		a = ['a','b','c']
+		for x in a:
+			print(x)
+	2、循环字典
+		a = {'a':'x','b':'y','c':'z'}
+		for key in a:
+			print(key)
+		如需要键值对同时打印的话，需要使用items()来读取，此时循环的变量需要两个去接收，前一个为key后一个为value
+		for key,value in a.items():
+			print(key,value)
+	3、循环多个列表，可以使用zip()进行打包
+		a = ['x','y','z']
+		b = ['a','b','c']
+		for i,k zip(a,b):
+			print('{0}---{1}'.format(i,k))
+	4、需求:求（a,b）范围内素数
+		for n in range(a,b):
+			for x in range(2,x):
+				if x % 2 == 0:
+					print(n,'equals',x,'*','n//x')
+					break
+			else:
+				print(n,'is a prime number')
+	5、需求：斐波那契数列
+		def fib(n):
+			result = []
+			a,b = 0,1
+			while a < n:
+				result.append(a)
+				a,b = b,a+b
+			return result
+
+	
