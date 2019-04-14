@@ -1,0 +1,5 @@
+script_study=`pwd`
+echo -e "\033[35m now in "$script_study" \033[0m"
+git reset --hard
+git clean -xdf
+git pull
