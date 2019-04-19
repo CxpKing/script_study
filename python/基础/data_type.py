@@ -111,9 +111,12 @@ print('并集 set1 | set2 ->',s2)
 ##差集set1对set2
 s3 = set1 - set2
 print('差集 set1 - set2 ->',s3)
-##并集-交集
+##不同时属于两集合的元素
+print('不同时属于两集合的元素 ->')
 s4 = s2-s1
-print('并集 - 交集 ->',s4)
+print('	方式1：并集-交集 ->',s4)
+s5 = s1 ^ s2
+print('	方式2：set1^set2 ->',s5)
 #增加
 set1.add('F')
 print('set1.add(\'F\') ->',set1)
