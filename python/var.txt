@@ -9,3 +9,30 @@
 	__doc__				文件注释
 	__file__			获取当前文件的路径，一般配合os模块的os.path.dirname()，os.path.basename() ，os.path.join() 模块函数来使用
 						a = __file__  b = os.path.dirname(a)  
+
+	1、os.path.dirname(file)返回的是.py文件的目录
+	2、os.path.abspath(file)返回的是.py文件的绝对路径（完整路径）
+	3、在命令行运行时，如果输入完整的执行的路径，则返回.py文件所在的目录，否则返回空目录。
+
+	import os
+	#os.path.dirname(__file__)返回的是.py文件的目录
+	path1=os.path.dirname(__file__)
+	print(path1)
+
+	#os.path.abspath(__file__)返回的是.py文件的绝对路径（完整路径）
+	path2=os.path.abspath(__file__)
+	print(path2)
+
+	#组合使用
+	path3=os.path.dirname(os.path.abspath(__file__))
+	print(path3)
+
+	#os.path.join()拼接路径
+	path4= os.path.join(os.path.dirname(os.path.abspath(__file__)),'1.py')
+	print(path4)
+
+	返回：
+	C:/Users/owolf/Desktop
+	C:\Users\owolf\Desktop\1.py
+	C:\Users\owolf\Desktop
+	C:\Users\owolf\Desktop\1.py
