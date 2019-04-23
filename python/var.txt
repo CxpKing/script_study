@@ -36,3 +36,84 @@
 	C:\Users\owolf\Desktop\1.py
 	C:\Users\owolf\Desktop
 	C:\Users\owolf\Desktop\1.py
+
+三、Python中self的含义
+self英文意思表示自己，本身
+1、这里的自己，指的是实例Instance本身
+2、
+
+四、Python中的__name__
+	模块是对象，并且所有的模块都有一个内置属性 __name__。一个模块的 __name__ 的值取决于您如何应用模块。如果import 一个模块，那么模块__name__的值通常为模块文件名，不带路径或者文件扩展名。但是您也可以像一个标准的程序样直接运行模块，在这 种情况下,__name__ 的值将是一个特别缺省"__main__"。
+
+	在cmd 中直接运行.py文件,则__name__的值是'__main__';
+	而在import 一个.py文件后,__name__的值就不是'__main__'了;
+	从而用if __name__ == '__main__'来判断是否是在直接运行该.py文件
+
+五、Python的模块(module)以及包的含义
+	模块：
+		Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。
+		模块让你能够有逻辑地组织你的 Python 代码段。把相关的代码分配到一个模块里能让你的代码更好用，更易懂。模块能定义函数，类和变量，模块里也能包含可执行的代码。
+	包  ：
+		为了组织好模块，会将多个模块放在一个目录下，同时改文件目录下包含一个文件__init__.py，改目录就被成为为包。
+
+	其他模块对于模块和包的引入方式：
+
+	引入模块：
+		导入整个模块：
+			引入：import modname
+			使用：modname.fun()、modname.VAR
+		导入模块某个（多个）函数、变量。
+			引入：from modname import fun1,fun2
+			使用：fun1()
+
+				 from modname import *
+
+	引入包下面的模块：
+		导入
+
+	注：from . import test1 导入当前目录下的test1模块
+		from .. import test 导入上一层目录下的test模块
+
+六、__init__.py与__all__的使用
+	定义包，需要有__init__.py文件，于是当该包被导入时，包中的__init__.py会被加载，__init__.py中常常使用__all__来控制导包时的精确控制
+	│  mod_test.py
+	│
+	└─mol
+	    │  m1.py
+	    │  m2.py
+	    │  __init__.py
+
+
+	mod_test.py
+		from mol import *
+		fun1()
+		fun2()
+		print(var1,'--------',var2)
+
+	m1.py
+		var1='a'
+		def fun1():
+			print('fun1()')
+
+		def fun2():
+			print('fun2()')
+
+	m2.py
+		var2='b'
+		def fun3():
+			print('fun3()')
+
+		def fun4():
+			print('fun4()')
+
+	__init__.py
+		from mol.m1 import *
+		from mol.m2 import *
+		'''
+		当导入包mol时，只会导入下面两个函数和两个变量到文件中
+		'''
+		__all__ = [
+			'mod1','mod2','var1','var2'
+		]
+
+八、__main__.py
