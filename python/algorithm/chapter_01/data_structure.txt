@@ -1,0 +1,11 @@
+一、数据结构
+	1、数组
+		删除列表中的重复元素并保持顺序不变
+		def dedupe(items):
+			seen = set()
+			for item in items:
+				if item is not in seen:
+					yield item
+					seen.add(item)
+
+		if for
