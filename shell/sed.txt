@@ -1,0 +1,26 @@
+sed(Stream EDitor)的使用（必须掌握）：
+一、sed定位文本的方法：
+    x                  x为指定行号
+    x,y                x到y行
+    /pattern/pattern/  查询包括两个匹配模式的行
+    /pattern/,x        从与pattern匹配的行到x行之间的行
+    x,/pattern/        从x行到与pattern匹配的行
+    x,y!               查询不包括从x,y的行
+二、sed提供的编辑命令
+    p                  打印匹配行
+    =                  打印文件行号
+    a\                 在定位文本行号之后追加文本信息
+    i\                 在定位文本行号之前插入文本信息
+
+用法1：在命令行输入sed命令来操作文件
+sed 选项 "sed命令" 输入文件
+    sed -n 选项结合p命令打印行
+        sed -n "xp" in_file :-n选项表示不打印sed编辑对象的全部内容sed -n "1p" file 打印第一行
+        sed -n "x,yp" in_file :sed命令部分x,yp表示的是打印x到y行的内容。
+        sed -n "/pattern/p" in_file :pattern表示想要匹配的字符（匹配是大小写敏感的）
+    sed -e 选项,该选项是用于使用多个编辑命令需要在一次编辑中时使用格式如下
+        sed -n -e "/pattern/命令1" -e "/pattern/命令2" in_file
+    
+
+
+

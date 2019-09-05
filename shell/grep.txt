@@ -1,0 +1,29 @@
+grep使用
+1、grep的选项有如下：
+    grep -c str :匹配输出str的行数
+    grep -i str :匹配时忽略大小写
+    grep -h str :查询多文件时不显示文件名
+    grep -l str :列出匹配str所在的文件名
+    grep -n str :输出匹配str所在的行号
+    grep -w str :匹配整个str
+    grep -x str :匹配整行
+    grep -r str :递归搜索
+    grep -F str :不是用正则表达式
+2、grep与正则表达式
+    grep -r ^_ dir/file :搜索以下划线开头的词
+    grep -nr ^$ dir/file :查空白行
+    grep -nr [a-zA-Z] dir/file ：实现忽略大小写
+    grep -nr ^/..../ dir/file :搜索以/开头中间4个字符任意最后以/结束的字符
+    grep -nr ^-*B dir/file :搜索以-（*表示0或多个-）开头接着是B开头的字符串
+3、grep使用转义符号\
+    grep -nr "www\.baidu\.com" dir/file :查找字符串www.baudi.com,需要将元字符.转移，屏蔽其特殊含义。
+4、grep与POSIX(Portable Operating System Interface of UNIX)可移植操作系统接口
+    [:upper:]大写字母[A-Z]
+    [:lower:]小写字母[a-z]
+    [:dight:]数字[0-9]
+    [:alnum:]字母和数字（包含大小写）
+    [:alpha:]大小写字母
+    [:space:]空格键或Tab健
+    [:cntrl:]Ctrl健
+    [:xdight:]十六进制数
+
