@@ -13,14 +13,40 @@ sed(Stream EDitor)的使用（必须掌握）：
     i\                 在定位文本行号之前插入文本信息
 
 用法1：在命令行输入sed命令来操作文件
-sed 选项 "sed命令" 输入文件
-    sed -n 选项结合p命令打印行
-        sed -n "xp" in_file :-n选项表示不打印sed编辑对象的全部内容sed -n "1p" file 打印第一行
-        sed -n "x,yp" in_file :sed命令部分x,yp表示的是打印x到y行的内容。
-        sed -n "/pattern/p" in_file :pattern表示想要匹配的字符（匹配是大小写敏感的）
-    sed -e 选项,该选项是用于使用多个编辑命令需要在一次编辑中时使用格式如下
-        sed -n -e "/pattern/命令1" -e "/pattern/命令2" in_file
-    
+三、文本定位：
+    sed 选项 "sed命令" 输入文件
+        sed -n 选项结合p命令打印行
+            sed -n "xp" in_file :-n选项表示不打印sed编辑对象的全部内容sed -n "1p" file 打印第一行
+            sed -n "x,yp" in_file :sed命令部分x,yp表示的是打印x到y行的内容。
+            sed -n "/pattern/p" in_file :pattern表示想要匹配的字符（匹配是大小写敏感的）
+            sed -n "/$/"p in_file :打印所有行
+            sed -n "$"p in_file :打印最后一行
+            sed -n "/.*name/"p in_file:.*表示匹配无限制长度的任意字符串
+            sed -n "20,40!"p in_file:用！表示取反，20，40表示行号，打印不包含20-40行的其他行
+            sed -n "20!"p in_file :打印除了20行的其他行
+        sed -e 选项,该选项是用于使用多个编辑命令需要在一次编辑中时使用格式如下
+            sed -n -e "/pattern/命令1" -e "/pattern/命令2" in_file
+        sed -f 选项,用法需要使用在sed脚本中
+            touch test.sed
+            #!/bin/sed -f
+            /str/a\
+            new word
+            运行脚本
+            ./test.sed in_file
+四、文本编辑基础
+    sed "/str/i\test words" in_file :行首插入文本
+    sed "/str/c\test words" in_file :修改匹配的行内容为test words
+    sed "1d" in_file :删除第一行
+    sed "$d" in_file :删除最后一行
+    sed "2,10d" in_file :删除制定范围的行
+    sed "/pattern/d" in_file :删除与关键字匹配的行
 
-
+    文本替换,替换单个字符或字符串，命令为s:
+    使用格式如下：
+    s/被替换的文本/新文本/[选项option]  :其中option有如下几个
+    g:替换文中所有匹配的字符串。
+    p:结合-n使用实现只打印替换行
+    w:
+    sed -n "s/oldword/newword/p" in_file :新文本替换旧文本，并只打印被替换的行（同一行只会替换第一个）
+    sed -n "s/oldword/newword/pg" in_file :新文本替换所有匹配的旧文本（任何位置）
 
