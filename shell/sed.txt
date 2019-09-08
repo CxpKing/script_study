@@ -49,4 +49,14 @@ sed(Stream EDitor)的使用（必须掌握）：
     w:
     sed -n "s/oldword/newword/p" in_file :新文本替换旧文本，并只打印被替换的行（同一行只会替换第一个）
     sed -n "s/oldword/newword/pg" in_file :新文本替换所有匹配的旧文本（任何位置）
+    sed -n "s/oldword/newword/ng" in_file :指定第几次匹配的字符被替换
+    sed "s/oldword/newword/gw output" in_file :w将文件输出到output文件中
+    sed "s/oldword/(&)/gw output" in_file :&用于存放将要被替换的字符，以便过后使用
+    sed "x,y w output_file" in_file ：重定向将x,y行代码定向到output_file
 
+变换命令
+    sed "y/old/new/" in_file :y用于将匹配文本替换为新文本，但是两个文本长度必须一致
+
+命令组
+    sed -n '/str/{p;=}' in_file :{}符号作用与-e作用一致，执行多个命令。
+    sed -n '/str/{s/i/I/g;s/le/LE/}' in_file
